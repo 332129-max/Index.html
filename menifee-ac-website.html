@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menifee Air Conditioning — Comfort You Can Count On</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1F2D;
+    --navy-mid: #152636;
+    --ice: #E8F4FD;
+    --sky: #5BA3C9;
+    --sky-light: #A8D4EC;
+    --sky-dark: #2E7FAD;
+    --gold: #C8A96E;
+    --white: #FAFCFE;
+    --gray: #8A9BAA;
+    --text: #1A2E3D;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 5vw;
+    background: rgba(13, 31, 45, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(91, 163, 201, 0.15);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 36px; height: 36px;
+    background: var(--sky);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-logo-text {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .nav-logo-sub {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: var(--sky-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(250,252,254,0.7);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sky-light); }
+  .nav-cta {
+    background: var(--sky) !important;
+    color: var(--white) !important;
+    padding: 0.5rem 1.25rem !important;
+    border-radius: 4px;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--sky-dark) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(91,163,201,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(91,163,201,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,163,201,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding-top: 5rem;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--sky);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--sky-light);
+  }
+  .hero-desc {
+    font-size: 1rem; font-weight: 300; line-height: 1.8;
+    color: rgba(250,252,254,0.65);
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--sky);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border: none; border-radius: 4px;
+    font-family: var(--sans); font-size: 0.88rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--sky-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    color: rgba(250,252,254,0.75);
+    padding: 0.85rem 1.5rem;
+    border: 1px solid rgba(91,163,201,0.4);
+    border-radius: 4px;
+    font-family: var(--sans); font-size: 0.88rem; font-weight: 400;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--sky-light); color: var(--sky-light); }
+  .hero-visual {
+    position: relative; z-index: 2;
+    display: flex; justify-content: center; align-items: center;
+    padding-top: 5rem;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+  .hero-unit-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(91,163,201,0.2);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 2rem;
+    width: min(400px, 100%);
+    backdrop-filter: blur(8px);
+  }
+  .unit-icon {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, var(--sky-dark), var(--sky));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 12px 40px rgba(91,163,201,0.35);
+  }
+  .unit-label {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sky); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .unit-stat {
+    font-family: var(--serif); font-size: 3.5rem; font-weight: 300;
+    color: var(--white); line-height: 1; margin-bottom: 0.25rem;
+  }
+  .unit-stat-desc {
+    font-size: 0.82rem; color: rgba(250,252,254,0.5); margin-bottom: 2rem;
+  }
+  .unit-badges {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .badge {
+    font-size: 0.72rem; padding: 0.3rem 0.75rem;
+    background: rgba(91,163,201,0.1);
+    border: 1px solid rgba(91,163,201,0.25);
+    border-radius: 100px;
+    color: var(--sky-light);
+    letter-spacing: 0.05em;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0.4;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); }
+  .hero-scroll-line { width: 1px; height: 40px; background: var(--white); }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(91,163,201,0.12);
+    border-bottom: 1px solid rgba(91,163,201,0.12);
+    padding: 1.25rem 5vw;
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.8rem; font-weight: 400; letter-spacing: 0.05em;
+    color: rgba(168,212,236,0.8);
+  }
+  .trust-item span { font-size: 1rem; }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 7rem 5vw; }
+  .section-eyebrow {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--sky-dark);
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--sky-dark); }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.1; color: var(--navy);
+    margin-bottom: 1.5rem; max-width: 620px;
+  }
+  .section-title em { font-style: normal; color: var(--sky-dark); }
+  .section-lead {
+    font-size: 1rem; font-weight: 300; line-height: 1.85;
+    color: #4A6070; max-width: 520px; margin-bottom: 3rem;
+  }
+
+  /* ── SERVICES ── */
+  .services-bg { background: var(--ice); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem; margin-top: 3.5rem;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid rgba(91,163,201,0.18);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--sky), var(--sky-light));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(43,127,173,0.12); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 2rem; margin-bottom: 1.25rem; }
+  .service-name {
+    font-family: var(--serif); font-size: 1.4rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .service-desc { font-size: 0.88rem; line-height: 1.75; color: #5A7080; }
+
+  /* ── WHY US ── */
+  .why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .stat-card {
+    background: var(--navy);
+    border-radius: 12px; padding: 1.75rem 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  .stat-card::after {
+    content: '';
+    position: absolute; bottom: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(91,163,201,0.1);
+  }
+  .stat-num {
+    font-family: var(--serif); font-size: 2.8rem; font-weight: 300;
+    color: var(--sky-light); line-height: 1; margin-bottom: 0.4rem;
+  }
+  .stat-desc { font-size: 0.8rem; color: rgba(168,212,236,0.7); line-height: 1.5; }
+  .why-points { display: flex; flex-direction: column; gap: 1.5rem; }
+  .why-point { display: flex; gap: 1rem; align-items: flex-start; }
+  .why-point-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--ice);
+    border: 1px solid rgba(91,163,201,0.25);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    margin-top: 2px;
+  }
+  .why-point-text h4 { font-size: 0.95rem; font-weight: 500; color: var(--navy); margin-bottom: 0.3rem; }
+  .why-point-text p { font-size: 0.85rem; line-height: 1.7; color: #5A7080; }
+
+  /* ── REVIEWS ── */
+  .reviews-bg { background: var(--navy); }
+  .reviews-bg .section-title { color: var(--white); }
+  .reviews-bg .section-eyebrow { color: var(--sky-light); }
+  .reviews-bg .section-eyebrow::before { background: var(--sky-light); }
+  .reviews-bg .section-lead { color: rgba(168,212,236,0.7); }
+  .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem; margin-top: 3.5rem;
+  }
+  .review-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(91,163,201,0.15);
+    border-radius: 12px; padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+  .review-card:hover { border-color: rgba(91,163,201,0.35); }
+  .review-text {
+    font-family: var(--serif); font-size: 1.05rem; font-weight: 300;
+    line-height: 1.75; color: rgba(250,252,254,0.85);
+    margin-bottom: 1.25rem;
+  }
+  .review-author { font-size: 0.8rem; color: rgba(168,212,236,0.6); letter-spacing: 0.05em; }
+  .review-author strong { color: var(--sky-light); font-weight: 500; }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--sky-dark) 0%, var(--navy) 100%);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle 500px at 50% 50%, rgba(91,163,201,0.2), transparent);
+  }
+  .cta-section .section-eyebrow { justify-content: center; color: var(--sky-light); }
+  .cta-section .section-eyebrow::before { background: var(--sky-light); }
+  .cta-section .section-title { color: var(--white); margin: 0 auto 1.25rem; }
+  .cta-section .section-lead { color: rgba(250,252,254,0.65); margin: 0 auto 2.5rem; }
+  .cta-phone {
+    font-family: var(--serif); font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300; color: var(--white); margin-bottom: 0.5rem;
+  }
+  .cta-phone a { color: inherit; text-decoration: none; }
+  .cta-phone a:hover { color: var(--sky-light); }
+  .cta-sub { font-size: 0.8rem; color: rgba(168,212,236,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2.5rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #07131C;
+    padding: 3rem 5vw 2rem;
+    border-top: 1px solid rgba(91,163,201,0.1);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 2rem; margin-bottom: 2.5rem;
+  }
+  .footer-brand .nav-logo-text { font-size: 1.4rem; }
+  .footer-brand p {
+    font-size: 0.82rem; color: rgba(168,212,236,0.45); margin-top: 0.75rem;
+    max-width: 240px; line-height: 1.7;
+  }
+  .footer-col h5 {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sky); font-weight: 500; margin-bottom: 1rem;
+  }
+  .footer-col a, .footer-col p {
+    display: block; font-size: 0.85rem; color: rgba(168,212,236,0.5);
+    text-decoration: none; line-height: 2; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--sky-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(91,163,201,0.08);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem; color: rgba(168,212,236,0.3);
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: 6rem; padding-bottom: 3rem; }
+    .hero-visual { display: none; }
+    .why-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">❄</div>
+    <div>
+      <div class="nav-logo-text">Menifee Air</div>
+      <div class="nav-logo-sub">Conditioning</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Menifee, CA · Since the Beginning</div>
+    <h1 class="hero-title">Cool air.<br><em>Trusted hands.</em><br>Every time.</h1>
+    <p class="hero-desc">Family-owned HVAC experts serving the Inland Empire. Fair prices, honest work, and service people recommend to everyone they know.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-unit-card">
+      <div class="unit-icon">❄</div>
+      <div class="unit-label">Why Menifee Trusts Us</div>
+      <div class="unit-stat">25+</div>
+      <div class="unit-stat-desc">years serving the community</div>
+      <div class="unit-badges">
+        <span class="badge">Family Owned</span>
+        <span class="badge">Fair Pricing</span>
+        <span class="badge">Same-Day Service</span>
+        <span class="badge">Fully Licensed</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✓</span> Licensed & Insured</div>
+  <div class="trust-item"><span>⭐</span> 5-Star Rated</div>
+  <div class="trust-item"><span>🏠</span> Family Owned & Operated</div>
+  <div class="trust-item"><span>📍</span> Locally Based in Menifee</div>
+  <div class="trust-item"><span>🔧</span> All Makes & Models</div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-eyebrow">What We Do</div>
+  <h2 class="section-title">Full-service HVAC,<br><em>done right</em></h2>
+  <p class="section-lead">From emergency repairs on a 100° day to brand-new system installs, we handle every aspect of your home's comfort.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🌡️</div>
+      <div class="service-name">AC Repair</div>
+      <p class="service-desc">Fast diagnosis and expert repairs. We've come out on days off because we know what a broken AC in Menifee summer means.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <div class="service-name">New Installation</div>
+      <p class="service-desc">Seamless installs of new systems — single zone, multi-zone, or whole-home. Done clean, done right, done fast.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔄</div>
+      <div class="service-name">System Replacement</div>
+      <p class="service-desc">Upgrading an aging system? We'll help you choose the right unit for your home size and budget, without upselling you what you don't need.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛠️</div>
+      <div class="service-name">Maintenance & Tune-Up</div>
+      <p class="service-desc">Regular tune-ups extend the life of your system and catch small problems before they become expensive ones.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌬️</div>
+      <div class="service-name">Ventilation & Ductwork</div>
+      <p class="service-desc">New ventilated ceilings, duct sealing, and airflow improvements. Installed seamlessly, working perfectly.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔥</div>
+      <div class="service-name">Heating Systems</div>
+      <p class="service-desc">Furnace repair, heat pump service, and heating installations. Comfort year-round, not just in the summer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="about">
+  <div class="why-layout">
+    <div>
+      <div class="section-eyebrow">Why Choose Us</div>
+      <h2 class="section-title">Honest work.<br><em>Honest prices.</em><br>For 25+ years.</h2>
+      <p class="section-lead">We're your neighbors. We live here, work here, and take pride in taking care of the homes in this community. That's why people come back — and send their families to us.</p>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-point-icon">💬</div>
+          <div class="why-point-text">
+            <h4>We explain everything</h4>
+            <p>No mystery charges. We walk you through what's wrong, what it takes to fix it, and what it'll cost — before we start.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">💰</div>
+          <div class="why-point-text">
+            <h4>Pricing you can trust</h4>
+            <p>Better than competitive rates — that's what customers have said for decades. We don't price-gouge because your unit breaks on the hottest day of the year.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">🤝</div>
+          <div class="why-point-text">
+            <h4>Family-owned accountability</h4>
+            <p>When you call us, you get us. Real people who care about getting it right, not a call center and a stranger at the door.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">🔧</div>
+          <div class="why-point-text">
+            <h4>Older systems, no problem</h4>
+            <p>We keep the parts and know-how for older systems. If it can be fixed, we'll fix it — not just push you into buying new.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-stats">
+      <div class="stat-card">
+        <div class="stat-num">25+</div>
+        <div class="stat-desc">Years serving Menifee & the Inland Empire</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5★</div>
+        <div class="stat-desc">Consistently top-rated by loyal customers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100s</div>
+        <div class="stat-desc">Of local families served & referred</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">All</div>
+        <div class="stat-desc">Makes & models, including older systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-bg">
+  <div class="section-eyebrow">What Customers Say</div>
+  <h2 class="section-title">Real people.<br><em>Real results.</em></h2>
+  <p class="section-lead">We don't advertise much — we don't have to. Our customers do it for us.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Been using them here since 2000. The best, always. If I could give more than 5 stars I would. They know their stuff and have what we need for our older system too."</p>
+      <div class="review-author"><strong>Wendy W.</strong> · Customer since 2000</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"They've always been reliable, respectful, honest, clean and fairly priced. I refer everyone to them. We've used them through the years since 1997."</p>
+      <div class="review-author"><strong>Vicki A.</strong> · Customer since 1997</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Steve and Gary are outstanding! They know what they're doing, explain what's going on, and their prices are better than competitive. Completely trustworthy."</p>
+      <div class="review-author"><strong>Mike M.</strong> · Verified Customer</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Both my upstairs and downstairs AC were not working. Gary came out on his day off in the upper nineties, diagnosed both systems and quickly found every problem."</p>
+      <div class="review-author"><strong>John J.</strong> · Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Family owned and operated. Fixed our AC twice and installed a new system for my sister-in-law. Great work, friendly service, and they care about this community."</p>
+      <div class="review-author"><strong>Cassandra E.</strong> · Verified Customer</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Wonderful people. Recommended by the utility company 15 years ago — been using them ever since. Honest, reliable, and they do great work."</p>
+      <div class="review-author"><strong>Patricia J.</strong> · Local Guide</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section id="contact" class="cta-section">
+  <div style="position:relative;z-index:2;">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Ready for real comfort?</h2>
+    <p class="section-lead">Call us for a free quote or to schedule service. We pick up, we show up, and we get it done.</p>
+    <div class="cta-phone"><a href="tel:+19515551234">(951) 555 – 1234</a></div>
+    <div class="cta-sub">Call or text · Mon–Sat 7am–6pm · Emergency service available</div>
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="tel:+19515551234" class="btn-primary" style="background:var(--white);color:var(--navy-mid);">📞 Call Now</a>
+      <a href="mailto:hello@menifeeac.com" class="btn-ghost" style="border-color:rgba(250,252,254,0.35);color:rgba(250,252,254,0.75);">✉ Send a Message</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;background:var(--sky);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;">❄</div>
+        <div>
+          <div class="nav-logo-text" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);">Menifee Air</div>
+          <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--sky-light);">Conditioning</div>
+        </div>
+      </div>
+      <p>Family-owned HVAC serving Menifee and the Inland Empire with honesty, skill, and genuine care.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#services">AC Repair</a>
+      <a href="#services">New Installation</a>
+      <a href="#services">Maintenance</a>
+      <a href="#services">Heating Systems</a>
+      <a href="#services">Ventilation</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#about">About Us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="tel:+19515551234">(951) 555-1234</a>
+      <a href="mailto:hello@menifeeac.com">hello@menifeeac.com</a>
+      <p>Menifee, CA 92584</p>
+      <p>Mon–Sat 7am–6pm</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Menifee Air Conditioning. All rights reserved.</span>
+    <span>Serving Menifee · Murrieta · Temecula · Lake Elsinore</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = 1;
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .review-card, .stat-card, .why-point').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
